@@ -1,0 +1,500 @@
+%
+% Copyright (c) 2025 Vernus. All rights reserved.
+% Vernus is a Moonka Hey Ltd. company.
+%
+% This document is provided for informational purposes only and does not constitute
+% investment, legal, tax, or other professional advice.
+%
+
+\newcommand{\projectname}{Vernus}
+\newcommand{\tokenticker}{\$VER}
+\newcommand{\version}{v0.1.0}
+\newcommand{\releasedate}{\today}
+\newcommand{\maintitle}{A human-first perspective on the future of content distribution}
+\newcommand{\subtitle}{\projectname{} and the \tokenticker{} token}
+
+\documentclass[10pt]{article}
+
+\usepackage{fontspec}
+\usepackage{emoji}
+
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{enumitem}
+\usepackage{titlesec}
+
+\usepackage{graphicx}
+\usepackage{svg}
+\usepackage{tikz}
+\usepackage{fancyhdr}
+\usepackage{eso-pic}
+
+\usetikzlibrary{arrows.meta,positioning,calc,fit,shapes.geometric,backgrounds}
+
+\setmainfont{IBMPlexSerif}[
+  Path=fonts/,
+  Extension=.otf,
+  UprightFont=*-Regular,
+  BoldFont=*-SemiBold,
+  ItalicFont=*-Italic,
+  BoldItalicFont=*-SemiBoldItalic
+]
+
+\setsansfont{IBMPlexSans}[
+  Path=fonts/,
+  Extension=.otf,
+  UprightFont=*-Regular
+]
+
+\setmonofont{IBMPlexMono}[
+  Path=fonts/,
+  Extension=.otf,
+  UprightFont=*-Regular
+]
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=[RGB]{80,43,218},
+  citecolor=[RGB]{80,43,218},
+  urlcolor=[RGB]{80,43,218},
+  pdftitle={\projectname{}: \maintitle},
+  pdfauthor={Vernus}
+}
+
+\AddToShipoutPicture{%
+  \AtPageUpperLeft{%
+    \raisebox{-3cm,-0.75cm}{\includesvg[height=0.75cm]{images/logo}}%
+  }%
+}
+
+\setlength{\parskip}{0.5em}
+\setlist{parsep=0em}
+
+\titlespacing*{\section}{0pt}{1.0em}{1.0em}
+\titlespacing*{\subsection}{0pt}{0.75em}{0.75em}
+\titlespacing*{\subsubsection}{0pt}{0.5em}{0.5em}
+
+\title{\maintitle}
+\author{
+  Cserei Zoltán\\
+  z@vernus.one}
+\date{
+  \releasedate{}\\
+  \small Version \version{}\\
+}
+
+\begin{document}
+  \begin{titlepage}
+    \thispagestyle{empty}
+    \vspace*{0.2\textheight}
+
+    \begin{center}
+      {\huge \maintitle\\[1.25em]}
+      {\large\itshape \subtitle}
+    \end{center}
+
+    \begin{center}
+      {\footnotesize Cserei Zoltán \quad\textperiodcentered\quad z@vernus.one \quad\textperiodcentered\quad \href{https://vernus.one}{vernus.one}}\\
+
+      \vspace{0.75em}
+
+      {\footnotesize Version \texttt{\version{}}}\\
+      {\footnotesize \releasedate{}}\\
+    \end{center}
+
+    \vfill
+
+    \begin{center}
+      {\scriptsize Contract address: \texttt{C9bnW7vtPA8Z4XqDAsPAcsvMgrbk6G25chccMUAwQ777}\quad\textperiodcentered\quad \href{https://token.vernus.one}{token.vernus.one}}
+    \end{center}
+  \end{titlepage}
+
+  \pagenumbering{roman}
+
+  \begin{abstract}
+    \textbf{\projectname{}} was built to address systemic challenges in media we know all too well: algorithmic feeds, subscription fatigue, not to mention the ever-increasing presence of AI slop. We are building infrastructure for creator economies, enabling pay-per-piece access, fair revenue splits, on-chain ownership and.
+
+    A fiat-based version of the product is already deployed today. But it is a mere stepping stone towards fulfilling our vision; with low fees and native programmability, Solana opens up a suite of opportunities to enable on-chain licensing, rights management, and creator-aligned royalty flows.
+
+    The native token, \textbf{\tokenticker{}}, is an SPL token deployed through \textbf{Heaven}. It is used to settle access fees, gate premium features, reward contributions, and power governance across the platform.
+
+    Posts are minted as NFTs with streamable royalties, turning \textbf{\projectname{}} into a \textit{prediction market} for content virality while making sure original creators earn perpetual royalties through access sales.
+
+    \textit{Proof of humanity} primitives align identity and reputation so rewards accrue to real people, defending human-first culture and fending off bot-driven manipulation.
+    
+    In essence, Vernus is neither a news feed nor a traditional marketplace. It is a rights-and-access protocol for the creator economy. A new way to think about content and human-first culture.
+
+    In the following sections, we elaborate on the core innovation of the \textbf{\projectname{}} platform and the \textbf{\tokenticker{}} token.
+
+    The following sections detail the platform's core innovations and token mechanics; parameters marked \textbf{TBD} will be finalized in subsequent document versions.
+  \end{abstract}
+
+  \phantomsection\addcontentsline{toc}{section}{Abstract}
+  \clearpage
+
+  \section*{Acknowledgments}
+    Every innovation builds on the shoulders of giants. We ought to thank the faceless, anonymous contributors of the community first, without whom none of this would be possible.
+
+    A \textit{web2}~$\longrightarrow$~\textit{web3} transition is a nontrivial undertaking. We are grateful to members of our community who shared their feedback, pointed out mistakes and eventually helped us grow.
+
+    Finally, and perhaps most importantly, we would like to thank the earliest of adopters of the platform, who believed in the vision and trusted us to lead the way.
+
+    \textit{S.V.}
+  \phantomsection\addcontentsline{toc}{section}{Acknowledgments}
+  \clearpage
+
+  \section*{Copyright}
+    \noindent Copyright \textcopyright{} 2025 \projectname{}. All rights reserved.
+
+    \noindent Vernus is a Moonka Hey Ltd. company.\\
+
+    \noindent Permission is granted to share this document for non-commercial, informational purposes provided that the content is not altered and proper attribution is maintained. This document does not grant any license to patents, trademarks, or other intellectual property.
+  \phantomsection\addcontentsline{toc}{section}{Copyright}
+
+  \section*{Legal disclaimer}
+    This document is for informational purposes only. It does not constitute an offer to sell or a solicitation of an offer to buy any securities, nor should it be relied upon for investment, legal, accounting, or tax advice. Digital assets involve risks, including loss of principal. Regulatory treatment may vary by jurisdiction. Prospective participants should conduct independent due diligence and consult professional advisors. \projectname{} provides no warranties regarding the completeness or accuracy of this document and assumes no liability for any losses.
+
+  \phantomsection\addcontentsline{toc}{section}{Legal disclaimer}
+  \clearpage
+
+  {\setlength{\parskip}{0pt}\tableofcontents}
+  \pagenumbering{arabic}
+  \let\oldsection\section
+  \renewcommand{\section}{\clearpage\oldsection}
+
+  \section{Core innovation}
+    \subsection{Pay-per-piece access}
+      Traditional subscription bundles force consumers to overpay for content they do not use. \textbf{\projectname{}} implements granular, pay-per-piece access: each post has a transparent, one-time unlock price set by the creator or discovered via market demand. This unbundles media consumption and channels revenue directly to what audiences value in the moment.
+
+      \paragraph{Implications}
+        \begin{itemize}[leftmargin=*]
+          \item \textbf{Consumer surplus recapture}: Users avoid subscription lock-in and pay only when value is certain.
+          \item \textbf{Efficient price discovery}: Prices adapt to demand over time through primary pricing and secondary signals (see Section~\ref{sec:posts_as_nft}).
+          \item \textbf{Global reach}: Micro-transactions with sub-cent fees (on Solana) make access viable worldwide.
+          \item \textbf{Higher quality conversations}: By limiting comments to users who have unlocked (paid for) a post, only those genuinely invested in the content can participate, reducing spam and fostering more thoughtful, relevant discussion.
+        \end{itemize}
+
+    \subsection{Industry-leading creator earnings}
+      Creators retain \textbf{90\% of direct sales} on primary content unlocks, far exceeding the 60--75\% typical on incumbent platforms. Platform fees are minimized and re-routed to sustain core infrastructure, ecosystem growth, and community grants.
+
+      \paragraph{Implications}
+        \begin{itemize}[leftmargin=*]
+          \item \textbf{Sustainable creator income}: Higher take rates improve unit economics for both business entities and independent creators, supporting sustainable earnings and ongoing reinvestment.
+          \item \textbf{Aligned incentives}: Platform growth correlates with creator success rather than extractive fees.
+        \end{itemize}
+
+    \subsection{Posts as NFTs with composable rights}\label{sec:posts_as_nft}
+      Every post can be minted as an NFT, encoding provenance, streamable royalties, and transferability. This turns content into a liquid, ownable asset that can be collected, traded, and integrated across the Solana ecosystem.
+
+      \paragraph{Capabilities}
+        \begin{itemize}[leftmargin=*]
+          \item \textbf{On-chain provenance}: Authenticity and ownership history are public and auditable.
+          \item \textbf{Utility hooks}: NFTs can embed access rights, perks, and in-app utilities that unlock over time.
+          \item \textbf{Market composability}: Integration with AMMs and DEX aggregators provides low-latency, on-chain price discovery by routing across pools and order books in a single transaction.
+        \end{itemize}
+
+    \begin{figure}[h]
+      \centering
+  
+      \definecolor{arrowcolor}{RGB}{59,54,48}
+  
+      \definecolor{buyerbg}{RGB}{117,255,198}
+      \definecolor{buyerborder}{RGB}{9,220,146}
+  
+      \definecolor{holderbg}{RGB}{247,217,85}
+      \definecolor{holderborder}{RGB}{238,190,17}
+  
+      \definecolor{creatorbg}{RGB}{254,164,205}
+      \definecolor{creatorborder}{RGB}{246,60,131}
+  
+      \definecolor{platformbg}{RGB}{166,158,255}
+      \definecolor{platformborder}{RGB}{108,82,255}
+  
+      \definecolor{panelbg}{RGB}{250,250,249}
+      \definecolor{panelborder}{RGB}{231,229,228}
+  
+      \begin{tikzpicture}[
+        every node/.style={font=\sffamily\small},
+        labeltext/.style={font=\sffamily\footnotesize},
+        actor/.style={draw, rectangle, inner sep=0pt, minimum width=2.4cm, minimum height=0.8cm, align=center},
+        arrow/.style={-Triangle}
+      ]
+  
+        % Primary panel
+        \node (pTitle) at (0,0) {\footnotesize Unlock fees (pay-per-piece)};
+  
+        \node[actor, fill=buyerbg, draw=buyerborder] (pBuyer) at (-4,-1.5) {Buyer};
+        \node[actor, fill=creatorbg, draw=creatorborder] (pCreator) at (4,-1) {Creator};
+        \node[actor, fill=platformbg, draw=platformborder] (pPlatform) at (4,-2) {Platform};
+  
+        % Orthogonal routing bus for primary arrows
+        \coordinate (pBus) at (-1.6,-1.5);
+  
+        % Primary arrows
+        \draw[arrowcolor] (pBuyer.east) -- (pBus);
+        \draw[arrow, arrowcolor] (pBus) |- node[above, labeltext, pos=0.75] {90\% to creator} (pCreator.west);
+        \draw[arrow, arrowcolor] (pBus) |- node[above, labeltext, pos=0.75] {10\% platform fee} (pPlatform.west);
+  
+        \begin{scope}[on background layer]
+          \node[draw=panelborder, fill=panelbg, inner sep=0.5cm, fit=(pTitle)(pBuyer)(pCreator)(pPlatform)] (panelA) {};
+        \end{scope}
+  
+        % Secondary panel positioned with fixed spacing
+        \node (sTitle) at (0,-4.2) {\footnotesize Unlock fees after NFT sale};
+  
+        \node[actor, fill=buyerbg, draw=buyerborder] (sBuyer) at (-4,-6.2) {Buyer};
+        \node[actor, fill=holderbg, draw=holderborder] (sHolder) at (4.0,-5.2) {Holder};
+        \node[actor, fill=creatorbg, draw=creatorborder] (sCreator) at (4.0,-6.2) {Creator};
+        \node[actor, fill=platformbg, draw=platformborder] (sPlatform) at (4.0,-7.2) {Platform};
+  
+        % Orthogonal routing bus for secondary arrows
+        \coordinate (sBus) at (-1.6,-6.2);
+  
+        % Secondary arrows
+        \draw[arrowcolor] (sBuyer.east) -- (sBus);
+        \draw[arrow, arrowcolor] (sBus) |- node[above, pos=0.75, labeltext] {80\% to holder} (sHolder.west);
+        \draw[arrow, arrowcolor] (sBus) |- node[above, pos=0.75, labeltext] {10\% royalty} (sCreator.west);
+        \draw[arrow, arrowcolor] (sBus) |- node[above, pos=0.75, labeltext] {10\% platform fee} (sPlatform.west);
+  
+        \begin{scope}[on background layer]
+          \node[draw=panelborder, fill=panelbg, inner sep=0.5cm, fit=(sTitle)(sBuyer)(sHolder)(sCreator)(sPlatform)] (panelB) {};
+        \end{scope}
+      \end{tikzpicture}
+  
+      {\footnotesize\caption{Unlock fee distribution before and after post has been minted and sold.}}
+    \end{figure}
+
+    \subsection{Perpetual, streamable royalties}
+    Creators receive a \textbf{10\% royalty} on every secondary sale by default. Royalties are enforced at the marketplace layer and distributed in \textbf{\tokenticker{}} where applicable, creating long-term alignment between creators, collectors, and curators.
+
+    \paragraph{Implications}
+      \begin{itemize}[leftmargin=*]
+        \item \textbf{Long-tail earnings}: High-quality posts continue generating revenue as cultural relevance compounds.
+        \item \textbf{Price-quality alignment}: Better content tends to appreciate, reinforcing creator incentives.
+      \end{itemize}
+
+    \subsection{Human-first integrity}
+      To defend culture and rewards against bot activity, \textbf{\projectname{}} integrates identity and reputation primitives (\textit{proof-of-humanity} concepts). Rewards, discovery, and governance are weighted toward verified human participation.
+
+      \paragraph{Outcomes}
+        \begin{itemize}[leftmargin=*]
+          \item \textbf{Resilient incentives}: Emissions and rewards accrue to real contributors, not Sybils.
+          \item \textbf{Higher signal}: Curation and pricing reflect human judgment rather than automated manipulation.
+        \end{itemize}
+
+    \subsection{Internet Capital Markets for content}
+      Combining pay-per-piece access with NFT ownership and on-chain settlement creates a de facto \textit{Internet Capital Market} for culture: attention, access, and ownership are priced on transparent rails. Collectors and curators who identify quality early benefit as value compounds over time.
+
+  \section{Content NFTs as prediction markets}
+    Content on \textbf{\projectname{}} can be minted as NFTs with streamable royalties and open secondary markets. Minting is an opt-in feature for creators. This market structure effectively creates a \textit{prediction market} on content outcomes: traders and fans price the expected future value of a post based on its quality, cultural impact, and monetization potential.
+
+    \subsection{Mechanism design}
+    \begin{itemize}[leftmargin=*]
+      \item \textbf{Primary pricing}: The initial mint price reflects creator reputation and early demand signals.
+      \item \textbf{Secondary discovery}: Resale prices update the market's expectation of long-run value (influence, views, embedded utility, derivative works).
+      \item \textbf{Royalty alignment}: Perpetual creator royalties link creator incentives to accurate price discovery and long-term quality.
+      \item \textbf{Preventing abuse}: Minting posts is limited to users with a certain reputation score, based on previous activity and proof of humanity.
+    \end{itemize}
+
+    \subsection{Information and liquidity}
+      \begin{itemize}[leftmargin=*]
+        \item \textbf{Signal aggregation}: Prices aggregate dispersed beliefs about future attention, resale demand, and utility; the platform can also showcase posts with increased trading activity to highlight trending content.
+        \item \textbf{Liquidity routing}: Integrations with AMMs and aggregators improve exit/entry, reducing volatility from thin markets.
+      \end{itemize}
+
+    \subsection{Implications}
+      \begin{itemize}[leftmargin=*]
+        \item \textbf{Fair funding for creativity}: High-signal content earns up-front via unlock fees (90\%) and over time, in case the creator opts to mint the post as an NFT, via royalties (10\%).
+        \item \textbf{Curation as a strategy}: Collectors who identify quality early are rewarded through appreciation, utility and \textbf{\tokenticker} airdrops.
+        \item \textbf{Open benchmarks}: On-chain price histories create transparent benchmarks for creators, curators, and partners.
+      \end{itemize}
+
+  \section{Technical foundation and launch via Heaven}
+    \$VER is an SPL token built on the \textbf{Solana} blockchain, chosen for its scalability, speed, and cost efficiency.
+    \begin{itemize}[leftmargin=*]
+      \item \textbf{Transaction fees}: Sub-cent costs make microtransactions economically viable.
+      \item \textbf{Settlement speed}: Approximately 400\,ms block times enable instant content unlocks.
+      \item \textbf{NFT support}: Posts are minted as Solana NFTs, inheriting streamable royalty and transfer logic.
+    \end{itemize}
+
+    \subsection{Launch and liquidity via Heaven}
+      \textbf{Heaven} is the final launchpad \& AMM on Solana. \textbf{\tokenticker{}} will launch on Heaven, with initial distribution and on-chain liquidity provision occurring directly through Heaven's launchpad and AMM. This enables transparent price discovery and deep liquidity from minute one.
+
+    \subsection{Reasons for choosing Heaven}
+      Solana tokens have a bad reputation. Most tokens represent zero-sum games and that is a situation that is impossible to break out of \textit{unless} there is actual value being brought to the pool. Vernus aims to bring real world utility to the table that points far behind just the crypto ecosystem. Our ideal user does not know \textit{CT} lingo. They just want an easy-to-use platform providing affordable access to great content.
+
+      Previous trials of tokenising Vernus have resulted in situations where the longevity of the product could not be guaranteed.
+
+      The ethos represented by Heaven is in line with the vision of Vernus. Being led by resilience, curiosity and commitment, the two initiatives are aligned, both technically and philosophically.
+
+  \section{Market opportunity and ICMs}
+    The global digital content market exceeds \textbf{\$400B} annually, but is constrained by three inefficiencies, all of which are directly addressed by \textbf{\projectname}:
+    \begin{itemize}[leftmargin=*]
+      \item \textbf{Subscription fatigue}: Consumers overspend or disengage due to subscription overload.
+      \item \textbf{Platform dependency}: Centralized platforms extract disproportionate fees, limiting creator income.
+      \item \textbf{Payment barriers}: Credit card fees and banking limitations exclude billions worldwide.
+    \end{itemize}
+
+    Internet Capital Markets \textbf{(ICM)} describes the convergence of content, identity, and programmable finance into a unified marketplace where attention, access, and ownership are priced and traded on-chain.
+
+    \subsection{Principles}
+      \begin{itemize}[leftmargin=*]
+      \item \textbf{Programmable assets}: Posts, access rights, and reputation become tokenized assets with explicit cash flows and governance hooks.
+      \item \textbf{Open rails}: Settlement, custody, and routing are executed on public infrastructure with composability and auditability.
+      \item \textbf{Aligned incentives}: Participants accrue value proportional to their contribution to discovery, creation, and distribution.
+    \end{itemize}
+
+    \subsection{Market Structure}
+      \begin{itemize}[leftmargin=*]
+        \item \textbf{Primary markets}: Creators post content which can be purchased at fixed prices, without subscription lock-ins tokens; 
+        \item \textbf{Secondary markets}: Posts are minted as NFTs with streamable royalties, prices reflect reputation and demand.
+        \item \textbf{Derivatives and indexes}: Basket tokens and vaults can track creators, genres, or themes, enabling passive exposure.
+      \end{itemize}
+
+  \section{Proof of Humanity and Reputation --- \textbf{WIP}}
+    Human participation is increasingly becoming the scarce resource the internet lacks. \projectname{} incorporates privacy-preserving identity and reputation primitives to ensure rewards, discovery, and governance accrue to real people while maintaining pseudonymity by default.
+
+    We do not hate on AI. Generating a transcript to a podcast? Awesome. Turning an article into voice? Great. But there needs to be genuine, original, creative human thought behind it all. Vernus rewards that.
+
+    \subsection{Objectives}
+      \begin{itemize}[leftmargin=*]
+        \item \textbf{Sybil resistance}: Make it costly---economically and socially---to create many accounts; prioritize one-person, one-presence outcomes where feasible.
+        \item \textbf{Privacy-preserving}: Minimize data collection, avoid storing raw biometrics, and favor selective disclosure and unlinkability where possible.
+        \item \textbf{Open and portable}: Support third-party attestations and verifiable credentials to avoid lock-in and enable portability across ecosystems.
+    \end{itemize}
+
+    \subsection{Attestation primitives}
+      \begin{itemize}[leftmargin=*]
+        \item \textbf{Liveness \& device attestations}: Optional device-level attestations or liveness checks to curb fully automated signups without persisting sensitive data.
+        \item \textbf{Social web-of-trust}: Endorsements and mutual uniqueness proofs form a graph that penalizes dense Sybil clusters; fraud can lead to slashing of reputation.
+        \item \textbf{Activity reputation}: On-platform behavior (purchases, unlocks, tips, successful posts) accrues non-transferable reputation that decays without continued positive activity.
+        \item \textbf{External credentials}: Optional import of verifiable credentials (education, employment, third-party PoH) with user-controlled disclosure.
+      \end{itemize}
+
+    \subsection{Privacy model}
+      \begin{itemize}[leftmargin=*]
+        \item \textbf{Pseudonym\,-first}: Users can participate without revealing real-world identity; real-name proofs are never required for general use.
+        \item \textbf{Selective disclosure}: Users choose which proofs to bind and when to reveal them; unlinkable proofs across contexts where feasible.
+        \item \textbf{Data minimization}: Use commitments, short-lived tokens, and client-side generation; avoid storing raw biometrics or persistent identifiers.
+      \end{itemize}
+
+    \subsection{Integration in \projectname{}}
+      \begin{itemize}[leftmargin=*]
+        \item \textbf{Rewards}: Weight \textbf{\tokenticker{}} emissions, grants, and airdrops toward higher\,-trust accounts to discourage Sybils from extracting value.
+        \item \textbf{Discovery}: Rank posts and comments using human-weighted signals; rate-limit or down-rank low-trust spam.
+        \item \textbf{Governance}: Gate proposal creation and apply modifiers to voting power using reputation tiers and attestations (\textbf{TBD}).
+        \item \textbf{Commerce}: Require minimal trust levels for actions prone to abuse (e.g., comments, tipping); apply dynamic rate limits per trust tier.
+      \end{itemize}
+
+    \subsection{Economics and Game Theory --- WIP}
+
+    \subsection{Risks and Mitigations --- WIP}
+
+  \section{Model Context Protocol (MCP) Integration}
+    \textbf{Model Context Protocol (MCP)} enables agentic clients (IDEs, assistants, partner applications) to access \textbf{\projectname{}} capabilities via a capability-scoped interface. The MCP server bridges the off-chain \texttt{vernus-api} (Rails) with on-chain Solana state for \textbf{\tokenticker{}} using \textbf{SPL} standards. This expands composability while maintaining a non-custodial security model.
+
+    \subsection{Architecture}
+    \begin{itemize}[leftmargin=*]
+      \item \textbf{MCP server}: Exposes resources and tools (content, commerce, transparency). It queries \texttt{vernus-api} for posts, prices, and receipts, and uses Solana RPC or indexers for balances and confirmations.
+      \item \textbf{Non-custodial}: The server prepares \emph{unsigned} Solana transactions for SPL token transfers of \tokenticker{}. Clients sign with their own wallets; keys never leave the client.
+      \item \textbf{Deterministic commerce}: Write operations are idempotent and auditable; off-chain receipts link to on-chain transaction signatures.
+    \end{itemize}
+
+    \subsection{Resources and Tools --- WIP}
+
+    \subsection{Security and Authentication --- WIP}
+
+    \subsection{Key Flows --- WIP}
+
+  \section{Tokenomics}
+    The total supply and distribution are designed to balance ecosystem growth with long-term sustainability. All allocations and schedules below are illustrative and subject to finalization.
+
+    \subsection{Supply and Distribution}
+      \begin{itemize}[leftmargin=*]
+        \item \textbf{Total Supply}: 1{,}000{,}000{,}000 \textbf{\tokenticker{}}
+        \item \textbf{Utility}: 30{,}000{,}000 \textbf{\tokenticker{}}
+        \item \textbf{Treasury target}: 50{,}000{,}000 \textbf{\tokenticker{}}
+        \item \textbf{Marketing target}: 20{,}000{,}000 \textbf{\tokenticker{}}
+      \end{itemize}
+      As the supply shrinks, the proportion of funds set aside might decrease in absolute terms, but the percentage relative to the total supply will remain the same.
+
+    \subsection{Deflationary mechanism}
+      Vernus makes revenue in two main ways: through the platform fees built into the product and through trading fees via Heaven. In both cases, the fees are split in the following manner:
+      \begin{itemize}[leftmargin=*]
+        \item 50\% is taken as profits.
+        \item 25\% is used to buy back \textbf{\tokenticker{}} and send it to the treasury wallets to help stabilize the price of the token and foster utility.
+        \item 25\% is burnt immediately to reduce the total supply and therefore increase the price of the token and present value to long term community members.
+      \end{itemize}
+
+    \subsection{Utility}
+      \begin{itemize}[leftmargin=*]
+        \item \textbf{Payments}: Settle transactions, subscriptions, and in-app purchases.
+        \item \textbf{Access}: Gate premium features, early access, or higher rate limits.
+        \item \textbf{Incentives}: Reward contributions (e.g., content, referrals, curation).
+        \item \textbf{Discounts}: Reduce platform fees when paying in \textbf{\tokenticker{}}.
+        \item \textbf{Governance}: Enable voting on key parameters and treasury usage.
+        \item \textbf{Staking (optional)}: Lock tokens for benefits or protocol rewards.
+      \end{itemize}
+
+  \section{Governance overview -- WIP}
+    Vernus will progressively decentralize into a \textbf{DAO model}:
+    \begin{itemize}[leftmargin=*]
+      \item \textbf{\tokenticker{}} holders will propose and vote on protocol upgrades, fee structures, and development priorities.
+      \item Treasury funds managed via on-chain governance to ensure transparency.
+    \end{itemize}
+
+  \section{Roadmap --- WIP}
+    \subsection{Product Roadmap -- WIP}
+      Product tasks are managed on GitHub.
+
+    \subsection{On-chain Roadmap}
+      \begin{itemize}[leftmargin=*]
+        \item \textbf{Early September 2025}: Token launch, fiat-only MVP fully functional \textit{completed}
+        \item \textbf{Late September 2025}: Settle unlock fees using \textbf{\tokenticker{}} and \textbf{SOL}.
+        \item \textbf{October 2025}: Introduce proof-of-humanity and reputation scoring.
+        \item \textbf{November 2025}: Start minting posts as NFTs and enable streamable royalties.
+        \item \textbf{December 2025}: Introduce multichain functionality via Base.
+      \end{itemize}
+
+  \section{Security and Compliance --- WIP}
+    Section to be released in v0.2 of this document.
+
+  \section{Appendices}
+    \subsection{Glossary}
+      \begin{description}[leftmargin=2em]
+        \item[SPL] Solana Program Library standard for fungible tokens.
+        \item[ATA] Associated Token Account; standard token-holding account for a wallet.
+      \end{description}
+
+      \subsection{References}
+        \begin{itemize}[leftmargin=*]
+          \item Heaven Docs: \url{https://docs.heaven.xyz/}
+          \item Solana Docs: \url{https://docs.solana.com/}
+          \item SPL Token: \url{https://spl.solana.com/token}
+        \end{itemize}
+
+    \subsection{Social }
+      \begin{itemize}[leftmargin=*]
+        \item Website: \url{https://vernus.one/}
+        \item Twitter: \url{https://x.com/vernusone}
+        \item Telegram: \url{https://t.me/vernusone}
+        \item Discord: \url{https://discord.gg/jcVu58NsKv}
+        \item GitHub: \url{https://github.com/vernusone}
+        \item LinkedIn: \url{https://www.linkedin.com/company/vernusone}
+        \item Facebook: \url{https://www.facebook.com/vernusone}
+        \item Instagram: \url{https://www.instagram.com/vernusone}
+      \end{itemize}
+
+  \clearpage
+  \thispagestyle{empty}
+  \vspace*{\fill}
+
+  \begin{center}
+    \emoji{cherry-blossom}
+  \end{center}
+
+  \vspace*{\fill}
+\end{document}
+
